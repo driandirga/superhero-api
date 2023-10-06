@@ -77,6 +77,8 @@ namespace SuperHeroAPI.Controllers
             hero.Power = request.Power;
             hero.IsFly = request.IsFly;
 
+            await _context.SaveChangesAsync();
+
             var heroes = await _context.SuperHeroes.ToListAsync();
             if (heroes.Count == 0)
                 return BadRequest("Heroes doesn't exist.");
